@@ -2,7 +2,7 @@ use serde::{ser::Error as SerializeError, Serialize, Serializer};
 use time::{format_description::well_known::Rfc3339, OffsetDateTime};
 
 /// Indicates the severity of the impact to the affected system.
-#[derive(Serialize)]
+#[derive(Serialize, Debug, Clone)]
 #[serde(rename_all = "lowercase")]
 pub enum Severity {
     Info,
@@ -98,7 +98,7 @@ pub struct Change<T: Serialize> {
     pub links: Option<Links>,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug, Clone)]
 pub struct AlertTriggerPayload<T: Serialize> {
     /// The perceived severity of the status the event is describing with respect to the affected system.
     /// This can be critical, error, warning or info.
@@ -165,7 +165,7 @@ pub struct AlertAcknowledge {
     pub dedup_key: String,
 }
 
-#[derive(Serialize)]
+#[derive(Serialize, Debug, Clone)]
 pub struct AlertResolve {
     pub dedup_key: String,
 }
