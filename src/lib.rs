@@ -1,3 +1,4 @@
+#[cfg(any(feature = "sync", feature = "async"))]
 mod private_types;
 
 pub mod types;
