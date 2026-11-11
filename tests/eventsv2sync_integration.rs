@@ -2,7 +2,7 @@
 mod synctest {
     use pagerduty_rs::eventsv2sync::*;
     use pagerduty_rs::types::*;
-    use rand::{thread_rng, Rng};
+    use rand::{rng, RngExt};
     use serde::Serialize;
     use time::OffsetDateTime;
 
@@ -69,8 +69,8 @@ mod synctest {
     #[test]
     fn post_alert_maximum_trigger_acknowledge_resolve() {
         if let Some(ik) = INTEGRATION_KEY {
-            let mut rng = thread_rng();
-            let dedup_key = format!("TestDeDupKey{}", rng.gen_range(0..100));
+            let mut rng = rng();
+            let dedup_key = format!("TestDeDupKey{}", rng.random_range(0..100));
 
             let ev2 = EventsV2::new(ik.to_owned(), Some("pagerduty-rs test".to_owned())).unwrap();
             // With everything
@@ -126,8 +126,8 @@ mod synctest {
     #[test]
     fn post_alert_minimum_trigger_acknowledge_resolve() {
         if let Some(ik) = INTEGRATION_KEY {
-            let mut rng = thread_rng();
-            let dedup_key = format!("TestDeDupKey{}", rng.gen_range(0..100));
+            let mut rng = rng();
+            let dedup_key = format!("TestDeDupKey{}", rng.random_range(0..100));
 
             let ev2 = EventsV2::new(ik.to_owned(), None).unwrap();
             // With everything
