@@ -21,7 +21,7 @@ sync = ["reqwest/blocking"]
 # Need futures for Async
 async = []
 
-rustls = ["reqwest/rustls"]
+rustls = ["reqwest/rustls-tls"]
 
 [dependencies]
 url = "2.2.2"
